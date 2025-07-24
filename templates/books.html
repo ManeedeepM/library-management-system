@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Available Books</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body style="background-image: url('{{ url_for('static', filename='bg.jpg') }}'); background-size: cover;">
+
+    <div class="navbar">
+        <img src="{{ url_for('static', filename='logo.jpg') }}" class="logo">
+        <h2 style="color:white;">Welcome, {{ username }}</h2>
+        <a href="{{ url_for('add_book') }}">Add Book</a>
+        <a href="{{ url_for('logout') }}">Logout</a>
+    </div>
+
+    <div class="container">
+        <h1>Available Books</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>S.No.</th>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>Category</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for book in books %}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td>{{ book[1] }}</td>
+                    <td>{{ book[2] }}</td>
+                    <td>{{ book[3] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
